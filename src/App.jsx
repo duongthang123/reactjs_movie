@@ -10,6 +10,7 @@ function App() {
   const [movie, setMovie] = useState([]);
   const [movieRate, setMovieRate] = useState([]);
   const [movieSearch, setMovieSearch] = useState([]);
+  const [movieNowplaying, setMovieNowplaying] = useState([]);
 
   const handleSearch = async (searchValue) => {
     setMovieSearch([]);
@@ -25,7 +26,6 @@ function App() {
 
       const searchMovie = await fetch(url, options);
       const data = await searchMovie.json();
-      console.log(data.results);
       setMovieSearch(data.results);
       
     } catch(error) {
@@ -35,25 +35,37 @@ function App() {
 
   useEffect(() => {
     const fetchMovie = async () => {
-      const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
-        }
-      };
-      const url1 = 'https://api.themoviedb.org/3/movie/popular?language=vi';
-      const url2 = 'https://api.themoviedb.org/3/movie/top_rated?language=vi'
+      try {
+          const options = {
+          method: 'GET',
+          headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`
+          }
+        };
+        const endpoints = [
+          'https://api.themoviedb.org/3/movie/popular?language=vi',
+          'https://api.themoviedb.org/3/movie/top_rated?language=vi',
+          'https://api.themoviedb.org/3/movie/now_playing?language=vi'
+        ];
 
-      const [rest1, rest2] = await Promise.all([
-        fetch(url1, options),
-        fetch(url2, options),
-      ])
+        const [popularRes, topratedRes, nowplayingRes] = await Promise.all(
+          endpoints.map(url => fetch(url, options))
+        ); 
 
-      const data1 = await rest1.json();
-      const data2 = await rest2.json();
-      setMovie(data1.results)
-      setMovieRate(data2.results)
+        const [popularData, topratedData, nowplayingData] = await Promise.all([
+          popularRes.json(),
+          topratedRes.json(),
+          nowplayingRes.json(),
+        ]);
+
+        setMovie(popularData.results || []);
+        setMovieRate(topratedData.results || []);
+        setMovieNowplaying(nowplayingData.results || []);
+      } catch (error) {
+        console.log(error)
+      }
+      
     }
     fetchMovie();
   }, [])
@@ -71,6 +83,7 @@ function App() {
             />
           ) : (
             <>
+              <MovieList title={'Đang Chiếu'} data={movieNowplaying}/>
               <MovieList title={'Phim Hot'} data={movie}/>
               <MovieList title={'Phim Đề cử'} data={movieRate}/> 
             </>

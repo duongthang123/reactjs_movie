@@ -24,6 +24,7 @@ const Header = ({onSearch}) => {
                     className="p-2 outline-0 rounded-sm text-black bg-white"
                     onChange={(e) => setTextSearch(e.target.value)}
                     value={textSearch}
+                    onKeyDown={() => onSearch(textSearch)}
                 />
                 <button 
                     className="p-2 text-white bg-red-600 rounded cursor-pointer"

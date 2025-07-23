@@ -29,7 +29,7 @@ const MovieList = ({ title, data }) => {
   const {handleTrailer} = useContext(MovieContext);
 
   return (
-    <div className='text-white p-10 mb-10 max-w-full'>
+    <div className='text-white p-10 max-w-full'>
         <h2 className="uppercase text-xl font-bold mb-4">{title}</h2>
         <Carousel
           responsive={responsive}
