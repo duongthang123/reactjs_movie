@@ -29,7 +29,7 @@ const MovieList = ({ title, data }) => {
   const {handleTrailer} = useContext(MovieContext);
 
   return (
-    <div className='text-white p-10 max-w-full'>
+    <div className='text-white p-4 md:p-10 max-w-full'>
         <h2 className="uppercase text-xl font-bold mb-4">{title}</h2>
         <Carousel
           responsive={responsive}
@@ -38,7 +38,7 @@ const MovieList = ({ title, data }) => {
               {data?.map((item) => (
                 <div
                   key={item.id}
-                  className="space-x-4 w-[200px] h-[300px] relative bg-cover bg-no-repeat bg-center hover:scale-105 transition-transform duration-500 ease-in-out cursor-pointer"
+                  className="space-x-4 w-[170px] md:w-[200px] h-[300px] relative bg-cover bg-no-repeat bg-center hover:scale-105 transition-transform duration-500 ease-in-out cursor-pointer"
                   style={{
                     backgroundImage: `url(${import.meta.env.VITE_IMG_URL}${item.poster_path})`
                   }}
