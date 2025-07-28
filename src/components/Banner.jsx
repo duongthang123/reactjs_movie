@@ -16,12 +16,12 @@ const Banner = () => {
                     <div className="flex flex-col space-y-3">
                         <h1 className="text-white text-[26px] font-bold md:text-[40px]">Nghe nói em thích tôi</h1>
                         <div className="flex items-center space-x-3">
-                            <img src={IconRating} alt="rating" className="w-8 h-8 z-21"/>
-                            <img src={IconRating} alt="rating" className="w-8 h-8"/>
-                            <img src={IconRating} alt="rating" className="w-8 h-8"/>
-                            <img src={IconRatingHalf} alt="rating" className="w-8 h-8"/>
+                            <img src={IconRating} alt="rating" className="w-4 h-4 md:w-8 md:h-8 z-21"/>
+                            <img src={IconRating} alt="rating" className="w-4 h-4 md:w-8 md:h-8"/>
+                            <img src={IconRating} alt="rating" className="w-4 h-4 md:w-8 md:h-8"/>
+                            <img src={IconRatingHalf} alt="rating" className="w-4 h-4 md:w-8 md:h-8"/>
                         </div>
-                        <p className="text-white text-[20px] line-clamp-2">
+                        <p className="text-white text-[16px] md:text-[20px] line-clamp-2">
                             Lorem Ipsum is simply dummy text of the printing and typesetting
                             industry. Lorem Ipsum has been the standard dummy text ever
                             since the 1500s, when an unknown printer took a galley of type
