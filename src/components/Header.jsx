@@ -64,7 +64,7 @@ const Header = ({onSearch}) => {
                     </div>
 
                     <nav className="flex flex-col px-6 space-y-4">
-                        <a href="#" className="hover:text-red-400">Home</a>
+                        <a href="/" className="hover:text-red-400">Home</a>
                         <a href="#" className="hover:text-red-400">About</a>
                         <a href="#" className="hover:text-red-400">Contact</a>
                     </nav>

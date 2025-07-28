@@ -12,7 +12,7 @@ const MovieSearch = ({title, data}) => {
             {data?.map((item) => (
                 <div
                   key={item.id}
-                  className="space-x-4 w-[188px] md:w-[200px] h-[300px] relative bg-cover bg-no-repeat bg-center hover:scale-105 transition-transform duration-500 ease-in-out cursor-pointer"
+                  className="space-x-4 min:w-[156px] md:w-[200px] h-[300px] relative bg-cover bg-no-repeat bg-center hover:scale-105 transition-transform duration-500 ease-in-out cursor-pointer"
                   style={{
                     backgroundImage: `url(${import.meta.env.VITE_IMG_URL}${item.poster_path})`
                   }}
